@@ -144,6 +144,19 @@ class LcdApi:
             self.cursor_y = 0
         self.move_to(self.cursor_x, self.cursor_y)
 
+    def replace_str(self, cursor_x, cursor_y, string):
+        # Replace a string of characters starting at (x,y)
+        # validate x & y coordinates 
+        if cursor_x >= self.num_columns:
+            self.cursor_x = 0
+        if cursor_y >= self.num_lines:
+            self.cursor_y = 0
+        self.move_to(cursor_x, cursor_y)       
+
+        for char in string:
+            self.putchar(char)
+
+
     def putstr(self, string):
         # Write the indicated string to the LCD at the current cursor
         # position and advances the cursor position appropriately.
