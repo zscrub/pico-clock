@@ -19,13 +19,13 @@ months = {
 }
 
 weekdays = {
-        0: "Monday",
-        1: "Tuesday",
-        2: "Wednesday",
-        3: "Thursday",
-        4: "Friday",
-        5: "Saturday",
-        6: "Sunday"
+        0: "Mon",
+        1: "Tue",
+        2: "Wed",
+        3: "Thu",
+        4: "Fri",
+        5: "Sat",
+        6: "Sun"
 }
 
 def convert_hour(hour: int) -> tuple:
@@ -57,13 +57,12 @@ while True:
     time_values["hour"], time_of_day = convert_hour(time_values["hour"])
     convert_time(time_values)
     
-    # output = f"{weekdays[day]}, {months[month]} {time_values['mday']} {year} {time_values['hour']}:{time_values['minute']}:{time_values['second']} {time_of_day}"
-    top_output = f"{weekdays[day]}, {months[month]} {time_values['mday']}"
-    bot_output = f"{year} {time_values['hour']}:{time_values['minute']}:{time_values['second']} {time_of_day}"
+    top_output = f"{weekdays[day]}, {months[month]}-{time_values['mday']}-{year}"
+    bot_output = f"{time_values['hour']}:{time_values['minute']}:{time_values['second']} {time_of_day}"
+    print(top_output)
+    print(bot_output)
     lcd.clear()
-    # lcd.putstr(output)
     lcd.putstr(top_output)
-    lcd.move_to(0, lcd.cursor_y+1)
+    lcd.move_to(2, 1)
     lcd.putstr(bot_output)
-    # time.sleep_ms(650)
 
